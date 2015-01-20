@@ -24,7 +24,7 @@
   <packaging>pom</packaging>
   <properties>
     <slider.version>0.61.0</slider.version>
-    <slider.staging.repository>0.61.0</slider.staging.repository>
+
     <!-- artifacts used in plugins -->
     <apache-resources.version>1.0.4</apache-resources.version>
     <apache-source-release-assembly-descriptor.version>1.0.4</apache-source-release-assembly-descriptor.version>
@@ -72,17 +72,8 @@
     <build.redirect.test.output.to.file>false</build.redirect.test.output.to.file>
     
   </properties>
-  <repositories>
-    
-    <repository>
-      <id>ASF Staging</id>
-      <url>https://repository.apache.org/content/groups/staging/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-    </repository>
-  </repositories>
-  
+
+
   <dependencies>
 
     <dependency>
@@ -222,7 +213,7 @@
     <profile>
       <id>purge</id>
       <activation>
-        <activeByDefault></activeByDefault>
+        <activeByDefault>false</activeByDefault>
       </activation>
       <build>
         <plugins>
@@ -234,7 +225,7 @@
             <executions>
               <execution>
                 <id>purge-local-dependencies</id>
-                <phase>process-sources</phase>
+                <phase>prepare-package</phase>
                 <goals>
                   <goal>purge-local-repository</goal>
                 </goals>
@@ -256,6 +247,23 @@
         </plugins>
       </build>
     </profile>
+    
+    <profile>
+      <id>staging</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <repositories>
+        <repository>
+          <id>ASF Staging</id>
+          <url>https://repository.apache.org/content/groups/staging/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+        </repository>
+      </repositories>
+    </profile>
+      
   </profiles>
   
 </project>
