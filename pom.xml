@@ -20,10 +20,10 @@
   <groupId>com.github.steveloughran.sliderdepcheck</groupId>
   <artifactId>slider</artifactId>
   <name>Slider Dependency Check</name>
-  <version>0.61.0</version>
+  <version>0.81.1-incubating</version>
   <packaging>pom</packaging>
   <properties>
-    <slider.version>0.61.0</slider.version>
+    <slider.version>0.81.1-incubating</slider.version>
 
     <!-- artifacts used in plugins -->
     <apache-resources.version>1.0.4</apache-resources.version>
@@ -119,7 +119,7 @@
     
     <dependency>
       <groupId>org.apache.slider</groupId>
-      <artifactId>apache-slider-command-logger</artifactId>
+      <artifactId>command-logger-slider-package</artifactId>
       <version>${slider.version}</version>
       <type>zip</type>
     </dependency>
